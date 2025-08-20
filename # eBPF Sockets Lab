@@ -1,0 +1,41 @@
+# eBPF Sockets Lab
+
+This lab demonstrates how to use eBPF to monitor and interact with socket events in Linux. It includes:
+
+- **eBPF program** (`ebpf_program.c`): Logs socket operations using the `sockops` hook.
+- **User-space loader** (`loader.c`): Loads and attaches the eBPF program.
+- **Socket server/client** (`socket_server.c`, `socket_client.c`): Simple TCP server and client for testing.
+- **Helpers** (`helpers.h`): Common macros for error handling.
+- **Config file** (`config.json`): Example configuration for socket parameters.
+
+## How it works
+
+1. **Compile the eBPF program** to a `.o` object file.
+2. **Run the loader** to attach the eBPF program to the kernel.
+3. **Start the server and client** to generate socket events.
+4. **Observe logs** from the eBPF program (using `dmesg` or `bpftool`).
+
+## Build & Run
+
+```sh
+make
+sudo ./src/loader
+./src/socket_server
+./src/socket_client
+```
+
+## Requirements
+
+- Linux with eBPF support (kernel >= 4.18)
+- libbpf development libraries
+- GCC/Clang
+
+## Learning objectives
+
+- Understand eBPF socket hooks
+- Learn how to load and attach eBPF programs
+- Experiment with TCP socket events
+
+---
+
+**Note:** All code is commented for clarity. See each file for details.
